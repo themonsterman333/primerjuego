@@ -1,7 +1,7 @@
 function love.draw()
   love.graphics.rectangle("fill",x,y,w,h)
   love.graphics.rectangle("fill",bx,by,bw,bh)
-  love.graphics.pint(mensaje,10,10)
+  love.graphics.print(mensaje,10,10)
 
 end
 
@@ -21,7 +21,8 @@ function love.update(dt)
     y = y + 4
   end
 
-  if x < bx + bw and x + w > bx then
+  if x < bx + bw and x + w > bx and
+    y < by + bh and y + h > by then 
     mensaje = "Colisionando :D"
   else
     mensaje = ":C"
@@ -30,6 +31,9 @@ function love.update(dt)
 end
 
 function love.load()
+  x=300
+  y=100
+  w=30
   h=30
 
   bx=500
