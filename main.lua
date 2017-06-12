@@ -1,32 +1,30 @@
 function love.draw()
+  probando:draw()
+
   love.graphics.rectangle("fill",x,y,w,h)
-  love.graphics.rectangle("fill",bx,by,bw,bh)
-  love.graphics.print(mensaje,10,10)
+--  love.graphics.rectangle("fill",bx,by,bw,bh)
+  love.graphics.circle("fill",300,300,10,10)
 
 end
 
 function love.update(dt)
-  if love.keyboard.isDown("right") then
+  if love.keyboard.isDown("d") then
     x = x + 4
   end
-  if love.keyboard.isDown("left") then
+  if love.keyboard.isDown("a") then
     x = x - 4
   end
 
-  if love.keyboard.isDown("up") then
+  if love.keyboard.isDown("w") then
     y = y - 4
   end
 
-  if love.keyboard.isDown("down") then
+  if love.keyboard.isDown("s") then
     y = y + 4
+
   end
 
-  if x < bx + bw and x + w > bx and
-    y < by + bh and y + h > by then 
-    mensaje = "Colisionando :D"
-  else
-    mensaje = ":C"
-  end
+  probando:update(dt)
 
 end
 
@@ -36,9 +34,8 @@ function love.load()
   w=30
   h=30
 
-  bx=500
-  by=100
-  bw=50
-  bh=80
-  mensaje = ":C"
+
+  require"probando"
+  probando:load(0,0,30,50)
+
 end
